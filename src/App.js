@@ -168,6 +168,19 @@ function App() {
 
   const WelcomeStep = () => (
     <div className="text-center space-y-6">
+      {/* Demo Notice */}
+<div className={`p-4 rounded-xl border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20 border-blue-600' : 'bg-blue-50 border-blue-500'} mb-6`}>
+  <div className="flex items-start space-x-3">
+    <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5" />
+    <div>
+      <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">Portfolio Demo Application</h4>
+      <p className="text-sm text-blue-700 dark:text-blue-300">
+        This is a demonstration of CredWise Canada built for portfolio purposes. 
+        All data is simulated. You can explore features, skip to dashboard, or use demo walkthrough.
+      </p>
+    </div>
+  </div>
+</div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Welcome to CredWise Canada! 🇨🇦
@@ -211,12 +224,43 @@ function App() {
         </div>
       </div>
 
-      <button
-        onClick={handleNext}
-        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-medium flex items-center mx-auto transition-all duration-200 transform hover:scale-105"
-      >
-        Get Started <ArrowRight className="w-5 h-5 ml-2" />
-      </button>
+      <div className="space-y-4">
+  <button
+    onClick={handleNext}
+    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-medium flex items-center mx-auto transition-all duration-200 transform hover:scale-105"
+  >
+    Get Started <ArrowRight className="w-5 h-5 ml-2" />
+  </button>
+  
+  <div className="flex justify-center space-x-6">
+    <button
+      onClick={completeOnboarding}
+      className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline transition-colors"
+    >
+      Skip to Dashboard →
+    </button>
+    
+    <button
+      onClick={() => {
+        setFormData({
+          name: 'Demo User',
+          email: 'demo@example.com',
+          country: 'Pakistan',
+          arrivalDate: '6-months-to-1-year',
+          familySize: 'couple',
+          goals: ['credit', 'budget', 'transfer'],
+          income: '4000-6000',
+          housing: 'renting-apartment',
+          creditGoal: 'good-credit'
+        });
+        handleNext();
+      }}
+      className="text-sm text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 underline transition-colors"
+    >
+      Demo Walkthrough →
+    </button>
+  </div>
+</div>
     </div>
   );
 
