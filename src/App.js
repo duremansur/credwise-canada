@@ -1053,7 +1053,7 @@ function App() {
               </label>
               <input
                 type="text"
-                value="307,850 PKR"
+                value="205,000 PKR"
                 readOnly
                 className={`w-full px-4 py-3 rounded-lg border ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-100 border-gray-300'} focus:outline-none`}
               />
@@ -1062,7 +1062,7 @@ function App() {
             <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
               <div className="flex justify-between mb-2">
                 <span className="text-sm">Exchange Rate:</span>
-                <span className="text-sm font-medium">1 CAD = 307.85 PKR</span>
+                <span className="text-sm font-medium">1 CAD = 205.00 PKR</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm">Transfer Fee:</span>
@@ -1082,10 +1082,10 @@ function App() {
         <h3 className="text-xl font-semibold mb-4">Compare Transfer Services</h3>
         <div className="space-y-4">
           {[
-            { name: 'Wise', rate: '307.85', fee: '$4.99', time: '1-2 days', rating: 4.8 },
-            { name: 'Remitly', rate: '306.20', fee: '$3.99', time: '1-3 days', rating: 4.6 },
-            { name: 'Western Union', rate: '304.50', fee: '$8.99', time: '1 day', rating: 4.2 },
-            { name: 'MoneyGram', rate: '303.75', fee: '$7.99', time: '1-2 days', rating: 4.1 }
+            { name: 'Wise', rate: '205.00', fee: '$4.99', time: '1-2 days', rating: 4.8 },
+            { name: 'Remitly', rate: '203.50', fee: '$3.99', time: '1-3 days', rating: 4.6 },
+            { name: 'Western Union', rate: '201.20', fee: '$8.99', time: '1 day', rating: 4.2 },
+            { name: 'MoneyGram', rate: '200.85', fee: '$7.99', time: '1-2 days', rating: 4.1 }
           ].map((service, index) => (
             <div key={index} className={`p-4 border ${darkMode ? 'border-gray-700' : 'border-gray-200'} rounded-lg hover:border-blue-500 transition-colors cursor-pointer`}>
               <div className="flex justify-between items-center">
