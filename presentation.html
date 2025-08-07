@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredWise Canada - Product Strategy by Dure Mansur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(to bottom right, #dbeafe, #ede9fe);
+            min-height: 100vh;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 60px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Simple Grid - 4 columns */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        /* Simple Grid - 3 columns */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        /* Simple Grid - 2 columns */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .button-primary {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            color: white;
+        }
+
+        .button-secondary {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* List Styles */
+        ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        li {
+            padding: 8px 0;
+            color: #4b5563;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .grid-4,
+            .grid-3,
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .slide {
+                padding: 40px 30px;
+            }
+
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.75rem; }
+            p { font-size: 1rem; }
+        }
+
+        /* Hide all slides except active */
+        .slide {
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        /* Slide counter */
+        .counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: #2563eb;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter">
+        <span id="current">1</span> / <span id="total">11</span>
+    </div>
+
+    <div class="presentation-container">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>CredWise Canada</h1>
+            <p style="font-size: 1.5rem; color: #2563eb; font-weight: 600;">Financial Wellness Platform for Newcomers</p>
+            <p>A Product Strategy Case Study by <strong>Dure Mansur</strong></p>
+            
+            <div style="margin-top: 40px;">
+                <a href="#" class="button button-primary" onclick="nextSlide()">View Presentation</a>
+                <a href="https://credwise-canada.vercel.app" target="_blank" class="button button-secondary">Live Demo</a>
+            </div>
+        </div>
+
+        <!-- Slide 2: Core Idea & Vision -->
+        <div class="slide">
+            <h2>💡 Core Idea & Vision</h2>
+            <p><strong>The Big Idea:</strong> What if newcomers could navigate Canada's financial system as easily as locals?</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="icon">🎯</div>
+                    <h3>The Vision</h3>
+                    <p>Create a single platform that eliminates the 6-18 month financial integration struggle by providing culturally-aware guidance, credit building tools, and community support - all in one place.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🚀</div>
+                    <h3>The Mission</h3>
+                    <p>Empower every newcomer to achieve financial wellness in Canada through personalized guidance, transparent tools, and access to the same opportunities as established residents.</p>
+                </div>
+            </div>
+
+            <div style="background: #eff6ff; padding: 30px; border-radius: 16px; margin: 30px 0;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">Why This Matters</h3>
+                <p style="color: #1e40af; font-weight: 500;">Financial integration is the #1 barrier to newcomer success in Canada. Without credit history, proper banking relationships, or knowledge of Canadian financial systems, even highly skilled immigrants struggle with basic financial tasks for years.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: User Journey & Pain Points -->
+        <div class="slide">
+            <h2>👥 User Journey & Pain Points</h2>
+            <p>Understanding the newcomer experience from arrival to financial independence</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon">✈️</div>
+                    <h3>Month 1-3: Arrival</h3>
+                    <ul>
+                        <li>Need basic banking immediately</li>
+                        <li>No credit history = limited options</li>
+                        <li>Overwhelming financial terminology</li>
+                        <li>Cultural differences in banking</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon">🏠</div>
+                    <h3>Month 3-12: Settlement</h3>
+                    <ul>
+                        <li>Building first credit score</li>
+                        <li>Understanding tax obligations</li>
+                        <li>Managing budget in new currency</li>
+                        <li>Sending money to family back home</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon">📈</div>
+                    <h3>Year 1+: Growth</h3>
+                    <ul>
+                        <li>Improving credit for major purchases</li>
+                        <li>Investment and retirement planning</li>
+                        <li>Advanced financial products</li>
+                        <li>Achieving financial independence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: #fef3c7; padding: 25px; border-radius: 16px; margin: 30px 0;">
+                <h3 style="color: #92400e; margin-bottom: 10px;">Current Problem</h3>
+                <p style="color: #b45309;">Newcomers visit 5+ different websites, spend hours researching, make costly mistakes, and often give up on financial goals due to complexity and lack of cultural context.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: What's In It For Users -->
+        <div class="slide">
+            <h2>🎁 What's In It For Users</h2>
+            <p>Tangible benefits and outcomes that users experience with CredWise Canada</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="icon">💰</div>
+                    <h3>Financial Savings</h3>
+                    <ul>
+                        <li><strong>$200-500/year</strong> saved on remittance fees</li>
+                        <li><strong>$300-800/year</strong> saved on banking fees</li>
+                        <li><strong>$1000+/year</strong> saved through better budgeting</li>
+                        <li><strong>Lower insurance rates</strong> with better credit</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon">⏰</div>
+                    <h3>Time Savings</h3>
+                    <ul>
+                        <li><strong>10+ hours/month</strong> saved on research</li>
+                        <li><strong>6-12 months faster</strong> credit building</li>
+                        <li><strong>One-stop platform</strong> vs 5+ websites</li>
+                        <li><strong>Automated tracking</strong> vs manual monitoring</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon">🏆</div>
+                    <h3>Life Improvements</h3>
+                    <ul>
+                        <li><strong>Faster loan approvals</strong> for major purchases</li>
+                        <li><strong>Better rental applications</strong> with credit history</li>
+                        <li><strong>Financial confidence</strong> and reduced stress</li>
+                        <li><strong>Achieve Canadian dreams</strong> sooner</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon">🎓</div>
+                    <h3>Knowledge & Skills</h3>
+                    <ul>
+                        <li><strong>Master Canadian financial system</strong></li>
+                        <li><strong>Tax optimization strategies</strong></li>
+                        <li><strong>Investment knowledge</strong> for wealth building</li>
+                        <li><strong>Cultural financial wisdom</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Problem -->
+        <div class="slide">
+            <h2>🎯 The Problem</h2>
+            <p>405,000+ newcomers arrive in Canada annually facing financial integration challenges</p>
+            
+            <div class="grid-4">
+                <div class="card">
+                    <div class="stat-number">405K</div>
+                    <div class="stat-label">New Permanent Residents (2023)</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Canadian Credit History</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">12-18</div>
+                    <div class="stat-label">Months to Build Credit</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">3-8%</div>
+                    <div class="stat-label">Remittance Fees</div>
+                </div>
+            </div>
+            
+            <p><strong>Market Opportunity:</strong> $2.8B+ annual financial services market</p>
+        </div>
+
+        <!-- Slide 3: Solution -->
+        <div class="slide">
+            <h2>💡 The Solution</h2>
+            <p>Comprehensive financial platform with cultural context and open banking principles</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="icon">💳</div>
+                    <h3>Credit Builder</h3>
+                    <p>Build Canadian credit from zero with rent reporting and secured cards</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📊</div>
+                    <h3>Smart Budgeting</h3>
+                    <p>Culturally-aware budget categories and money-saving tips</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌍</div>
+                    <h3>Money Transfer</h3>
+                    <p>Compare rates from Wise, Remitly, Western Union</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🎓</div>
+                    <h3>Financial Education</h3>
+                    <p>Interactive learning with Canadian government resources</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Business Model -->
+        <div class="slide">
+            <h2>🏗️ Business Model</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Revenue Streams</h3>
+                    <ul>
+                        <li>Freemium SaaS ($12.99/month)</li>
+                        <li>Bank partnership commissions</li>
+                        <li>Money transfer referral fees</li>
+                        <li>White-label licensing</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Key Partnerships</h3>
+                    <ul>
+                        <li>Canadian Banks (RBC, TD, Scotia)</li>
+                        <li>Credit Bureaus (Equifax, TransUnion)</li>
+                        <li>Government (FCAC, CRA)</li>
+                        <li>Licensed Money Services</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Value Propositions</h3>
+                    <ul>
+                        <li>Zero-to-credit building path</li>
+                        <li>Cultural financial guidance</li>
+                        <li>Integrated money transfer</li>
+                        <li>Peer community support</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Success Metrics</h3>
+                    <ul>
+                        <li>Monthly Active Users</li>
+                        <li>Credit Score Improvements</li>
+                        <li>Feature Adoption Rate</li>
+                        <li>Customer Lifetime Value</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Technical -->
+        <div class="slide">
+            <h2>⚡ Technical Excellence</h2>
+            <p>Modern, scalable architecture demonstrating full-stack capabilities</p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0;">
+                <span style="background: #eff6ff; color: #2563eb; padding: 8px 16px; border-radius: 20px; font-weight: 600;">React.js</span>
+                <span style="background: #eff6ff; color: #2563eb; padding: 8px 16px; border-radius: 20px; font-weight: 600;">Tailwind CSS</span>
+                <span style="background: #eff6ff; color: #2563eb; padding: 8px 16px; border-radius: 20px; font-weight: 600;">JavaScript</span>
+                <span style="background: #eff6ff; color: #2563eb; padding: 8px 16px; border-radius: 20px; font-weight: 600;">GitHub</span>
+                <span style="background: #eff6ff; color: #2563eb; padding: 8px 16px; border-radius: 20px; font-weight: 600;">Vercel</span>
+                <span style="background: #eff6ff; color: #2563eb; padding: 8px 16px; border-radius: 20px; font-weight: 600;">Open Banking</span>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon">🔒</div>
+                    <h3>Security & Compliance</h3>
+                    <p>Privacy-first design with transparent disclaimers</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📱</div>
+                    <h3>User Experience</h3>
+                    <p>Mobile-first, accessible design with dark mode</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🔗</div>
+                    <h3>Integration Ready</h3>
+                    <p>Banking API connections and government resources</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Product Management -->
+        <div class="slide">
+            <h2>🎯 Product Management Skills</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="icon">👥</div>
+                    <h3>User-Centric Design</h3>
+                    <p>Progressive onboarding, cultural sensitivity, accessibility</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📈</div>
+                    <h3>Data-Driven Features</h3>
+                    <p>Real-time tracking, analytics, behavioral insights</p>
+                </div>
+                <div class="card">
+                    <div class="icon">⚖️</div>
+                    <h3>Risk & Compliance</h3>
+                    <p>Transparent disclaimers, privacy protection, regulatory alignment</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🤝</div>
+                    <h3>Stakeholder Alignment</h3>
+                    <p>Technical feasibility, business viability, cross-functional coordination</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Impact -->
+        <div class="slide">
+            <h2>📊 Demonstrated Impact</h2>
+            <p>End-to-end product development and strategic execution</p>
+            
+            <div class="grid-4">
+                <div class="card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Core Feature Sets</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Government Resources</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Mobile Responsive</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">$2.8B</div>
+                    <div class="stat-label">Market Opportunity</div>
+                </div>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>✅ Product Strategy</h3>
+                    <p>Market research, competitive analysis, business model design</p>
+                </div>
+                <div class="card">
+                    <h3>✅ Technical Leadership</h3>
+                    <p>Architecture decisions, development coordination, deployment</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Contact -->
+        <div class="slide">
+            <h1>Let's Connect</h1>
+            <p>Ready to discuss how I can bring this strategic thinking to your product team</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="stat-number">📧</div>
+                    <div class="stat-label">duremansur02@gmail.com</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">💼</div>
+                    <div class="stat-label">linkedin.com/in/duremansur</div>
+                </div>
+                <div class="card">
+                    <div class="stat-number">🐙</div>
+                    <div class="stat-label">github.com/duremansur</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h3>Experience the Full Application</h3>
+                <a href="https://credwise-canada.vercel.app" target="_blank" class="button button-primary">Live Demo</a>
+                <a href="https://github.com/duremansur/credwise-canada" target="_blank" class="button button-secondary">View Code</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-btn" onclick="prevSlide()">← Previous</button>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total').textContent = totalSlides;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            document.getElementById('current').textContent = index + 1;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>
